@@ -1,11 +1,3 @@
--- Create Users table
-CREATE TABLE users (
-                       id BIGSERIAL PRIMARY KEY,
-                       first_name VARCHAR(255) NOT NULL,
-                       last_name VARCHAR(255) NOT NULL
-);
-
--- Insert data into Users table
 INSERT INTO users (first_name, last_name) VALUES
                                               ('John', 'Doe'),
                                               ('Jane', 'Smith'),
@@ -18,15 +10,6 @@ INSERT INTO users (first_name, last_name) VALUES
                                               ('Daniel', 'Thomas'),
                                               ('Sophia', 'Martinez');
 
--- Create Portfolio table with foreign key reference
-CREATE TABLE portfolios (
-                           id BIGSERIAL PRIMARY KEY,
-                           name VARCHAR(255) NOT NULL,
-                           user_id BIGINT NOT NULL,
-                           CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
--- Insert data into Portfolio table
 INSERT INTO portfolios (name, user_id) VALUES
                                           ('John Portfolio', 1),
                                           ('Jane Portfolio', 2),
@@ -38,6 +21,3 @@ INSERT INTO portfolios (name, user_id) VALUES
                                           ('Jessica Portfolio', 8),
                                           ('Daniel Portfolio', 9),
                                           ('Sophia Portfolio', 10);
-
--- Optional: Create index on user_id for performance improvement
-CREATE INDEX idx_user_id ON portfolio(user_id);
