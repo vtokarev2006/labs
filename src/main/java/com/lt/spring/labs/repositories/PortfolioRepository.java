@@ -1,10 +1,8 @@
 package com.lt.spring.labs.repositories;
 
-import org.springframework.stereotype.Repository;
+import com.lt.spring.labs.entities.Portfolio;
+import org.springframework.data.repository.CrudRepository;
 
-interface PortfolioRepository {
-    void add(Repository repository);
-    Repository get(Long id);
-    Iterable<Repository> getAll();
+interface PortfolioRepository extends CrudRepository<Portfolio, Long> {
 
 }

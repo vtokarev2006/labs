@@ -17,19 +17,19 @@ public class UserController {
 
     @GetMapping("{id}")
     public ResponseEntity<User> fetchById(@PathVariable Long id){
-        return userRepository.get(id)
+        return userRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());    }
 
     @GetMapping
     public ResponseEntity<Iterable<User>> fetchAll(){
-        return  ResponseEntity.ok(userRepository.getAll());
+        return  ResponseEntity.ok(userRepository.findAll());
 
     }
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody User user) {
-        userRepository.add(user);
+        userRepository.save(user);
         return ResponseEntity.ok().build();
     }
 

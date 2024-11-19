@@ -19,14 +19,14 @@ public class TemperatureController {
 
     @GetMapping("cel-to-fah/{celsius}")
     public ResponseEntity<Integer> convertCelsiusToFahrenheit(@PathVariable double celsius) {
-        double result = (celsius * 9 / 5) + 32;
-        return ResponseEntity.ok((int) result);
+        int result = (int) (celsius * 9 / 5) + 32;
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("fah-to-cel/{fahrenheit}")
     public ResponseEntity<Integer> convertFahrenheitToCelsius(@PathVariable double fahrenheit) {
-        double result = (fahrenheit - 32) * 5 / 9;
-        return ResponseEntity.ok((int) result);
+        int result = (int) (fahrenheit - 32) * 5 / 9;
+        return ResponseEntity.ok(result);
     }
 
 
