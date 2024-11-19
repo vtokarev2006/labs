@@ -16,13 +16,13 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    ResponseEntity<User> fetchById(@PathVariable Long id){
+    public ResponseEntity<User> fetchById(@PathVariable Long id){
         return userRepository.get(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());    }
 
     @GetMapping
-    ResponseEntity<Iterable<User>> fetchAll(){
+    public ResponseEntity<Iterable<User>> fetchAll(){
         return  ResponseEntity.ok(userRepository.getAll());
 
     }
