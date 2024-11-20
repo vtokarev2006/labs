@@ -24,4 +24,17 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Portfolio> portfolios;
+
+    private String emailAddress;
+
+    private String phoneNumber;
+
+    private String countryOfResidence;
+
+    private String governmentIdentifier;
+
+    private Long balanceHeldOnAccount;
+
+    @Enumerated(EnumType.ORDINAL)
+    private IdentifierType identifierType;
 }

@@ -13,16 +13,16 @@ public class UserController {
 
     private final UserService userService;
 
-
     @GetMapping("{id}")
-    public ResponseEntity<User> fetchById(@PathVariable Long id){
+    public ResponseEntity<User> fetchById(@PathVariable Long id) {
         return userService.findById(id)
                 .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());    }
+                .orElse(ResponseEntity.notFound().build());
+    }
 
     @GetMapping
-    public ResponseEntity<Iterable<User>> fetchAll(){
-        return  ResponseEntity.ok(userService.findAll());
+    public ResponseEntity<Iterable<User>> fetchAll() {
+        return ResponseEntity.ok(userService.findAll());
 
     }
 
