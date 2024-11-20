@@ -1,0 +1,1 @@
+INSERT INTO stocks (symbol, min_order, max_order) VALUES ('IBM', 100, 5000);
