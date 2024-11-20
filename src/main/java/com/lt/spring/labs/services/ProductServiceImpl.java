@@ -5,11 +5,12 @@ import com.lt.spring.labs.repositories.StockRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class StockServiceImpl implements StockService {
+public class ProductServiceImpl implements ProductService {
 
     private final StockRepository stockRepository;
 
@@ -24,7 +25,7 @@ public class StockServiceImpl implements StockService {
     }
 
     @Override
-    public Iterable<Stock> findAll() {
+    public List<Stock> findAll() {
         return stockRepository.findAll();
     }
 }

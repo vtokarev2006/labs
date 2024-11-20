@@ -1,33 +1,35 @@
 package com.lt.spring.labs.controllers;
 
 import com.lt.spring.labs.entities.Stock;
-import com.lt.spring.labs.services.StockService;
+import com.lt.spring.labs.services.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("stocks")
 @RequiredArgsConstructor
-public class StockController {
-    private final StockService stockService;
+public class ProductController {
+    private final ProductService productService;
 
     @GetMapping("{id:\\d}")
     public ResponseEntity<Stock> fetchById(@PathVariable @Valid long id) {
-        return stockService.findById(id)
+        return productService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping
-    public ResponseEntity<Iterable<Stock>> fetchAll() {
-        return ResponseEntity.ok(stockService.findAll());
+    public ResponseEntity<List<Stock>> fetchAll() {
+        return ResponseEntity.ok(productService.findAll());
     }
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody Stock stock) {
-        stockService.add(stock);
+        productService.add(stock);
         return ResponseEntity.ok().build();
     }
 }
