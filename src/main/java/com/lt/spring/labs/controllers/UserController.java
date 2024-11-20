@@ -1,35 +1,34 @@
 package com.lt.spring.labs.controllers;
 
 import com.lt.spring.labs.entities.User;
-import com.lt.spring.labs.repositories.UserRepository;
+import com.lt.spring.labs.services.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("users")
+@RequiredArgsConstructor
 public class UserController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @GetMapping("{id}")
     public ResponseEntity<User> fetchById(@PathVariable Long id){
-        return userRepository.findById(id)
+        return userService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());    }
 
     @GetMapping
     public ResponseEntity<Iterable<User>> fetchAll(){
-        return  ResponseEntity.ok(userRepository.findAll());
+        return  ResponseEntity.ok(userService.findAll());
 
     }
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody User user) {
-        userRepository.save(user);
+        userService.save(user);
         return ResponseEntity.ok().build();
     }
 
